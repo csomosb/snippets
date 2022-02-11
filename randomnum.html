@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>random numbers</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&amp;display=swap');
+      #random-num-container { margin: 2rem auto; width:12rem; }
+      #wordButton { text-shadow: 1px 1px 0px #fdffff, -1px -1px 0 #aaa; background: #cccac7; width: 9rem; margin-left: 1.5rem; border-radius: 1rem; padding: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; justify-content: space-around; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.45); }
+      #wordButton:disabled { color: #8e8e8e; }
+      .numbersDone { color:#c63b3b !important; text-shadow: 1px 1px 0px #eac6c6, 0 0 20px #c63b3b !important; }
+      #num-container-div { height: 6rem; width: 12rem; border-radius: 11px; background-color: #353535; color:#fafaf4; font-size: 5.8rem; font-family: 'Source Sans Pro', sans-serif; margin-bottom: 1rem; text-align: center; font-weight: bold; line-height: 1 !important;}
+      .circle { height: 1rem; width: 1rem; border-radius: 50%; }
+      .circleOff { background: #626161; border: 2px #c63b3b solid; pointer:cursor; box-shadow: 1px 1px 1px #fdffff, -1px -1px 0 #aaa; }
+      .circleOn { background: #f0d7d7; border: 1px #c63b3b solid; box-shadow: 0 0 10px 2px #c63b3b !important; }
+    </style>
+    <div id="random-num-container">
+      <div id="num-container-div"><span id="num-container"></span></div>
+      <button type="button" name="button" id="wordButton" onclick="randomStart()"><div class="circle circleOff" id="circle"></div>Randomise</button>
+      <script>
+      function randomStart() {
+          ranInterval=setInterval(randomNum,20)
+        }
+
+        function randomNum() {
+          var x=document.getElementById("num-container");
+          var wordBtn = document.getElementById("wordButton");
+          var circle = document.getElementById("circle");
+          x.innerHTML=Math.floor((Math.random()*300)+100);
+          document.getElementById("wordButton").disabled = true;
+          setTimeout(randomStop,1200);
+        }
+
+        function randomStop() {
+          clearInterval(ranInterval);
+          wordButton.classList.add("numbersDone");
+          circle.classList.add("circleOn");
+          circle.classList.remove("circleOff");
+        }
+      </script>
+    </div>
+  </body>
+</html>
