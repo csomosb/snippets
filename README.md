@@ -21,3 +21,8 @@ Character quiz:
  * The users create a character by answering the questions in this character questionnaire.
  * Each question is on a card and progress is not permitted until an answer is chosen.
  * After the last question all of the answers are displayed.
+
+Form and graph:
+ * Three form inputs are to be populated with some text. In the original context it was three different objects.
+ * After submitting the answers three graphs appear with the text from the form as labels.
+ * The graphs are inline svg objects.
