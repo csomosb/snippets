@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Animation</title>
+    </head>
+    <body>
+      <style>
+      #container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      </style>
+      <div id="container">
+        <h1>Animation</h1>
+        <p onclick="resetGif()" style="text-decoration:underline;color:#455a7d;cursor: pointer;">Click here.</p>
+
+        <!-- first empty placeholder image -->
+        <figure data-layout="center">
+            <img alt="Animation of a blackboard. Writing in chalk appears; arrow pointing left, 1, ellipses, 10, ellipses, 20, arrow pointing right." title="" width="600" height="365" src="img/Blackboard.png" class="blackboard_gif"/>
+        </figure>
+
+        <!-- second hidden image -->
+        <figure style="display:none;">
+          <img alt="Animation of a blackboard. Writing in chalk appears; arrow pointing left, 1, ellipses, 10, ellipses, 20, arrow pointing right." title="" width="600" height="365" src="img/14_2Blackboard_v2.gif" class="blackboard_gif"/>
+        </figure>
+
+        <script type="text/javascript">
+
+        function resetGif() {
+            var img = document.getElementsByClassName("blackboard_gif");
+            img[0].src = img[1].src;
+        };
+
+        </script>
+      </div>
+    </body>
+</html>
