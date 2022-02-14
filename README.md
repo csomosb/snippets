@@ -10,3 +10,9 @@ Blurred text:
   * Here the users were to read a short story with only a small section actually legible, the rest blurred.
   * Instead of inserting an image the text itself was styled in a way that it wasn't possible to read it directly.
   * For screen readers aria attributes were added so that they read a distorted noise.
+
+Animation:
+ * Users interact with "Click me" text to start an animation.
+ * A static image switches to an animated gif.
+ * The gif was created based on a photograph in Photoshop.
+ * While the animation is my work, the photograph is not mine.
