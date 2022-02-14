@@ -16,3 +16,8 @@ Animation:
  * A static image switches to an animated gif.
  * The gif was created based on a photograph in Photoshop.
  * While the animation is my work, the photograph is not mine.
+
+Character quiz:
+ * The users create a character by answering the questions in this character questionnaire.
+ * Each question is on a card and progress is not permitted until an answer is chosen.
+ * After the last question all of the answers are displayed.
