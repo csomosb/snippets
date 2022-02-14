@@ -26,3 +26,11 @@ Form and graph:
  * Three form inputs are to be populated with some text. In the original context it was three different objects.
  * After submitting the answers three graphs appear with the text from the form as labels.
  * The graphs are inline svg objects.
+
+Table styles 1:
+ * Collection of table designs that are not yet implemented in the courses.
+ * As these are not yet used they are subject to further iteration.
+
+Table styles 2:
+ * Continuation of the table styles concept.
+ * These are actually in use and are considered more advanced designs.
