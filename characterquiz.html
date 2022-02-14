@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Character questionnaire</title>
+    </head>
+    <body>
+      <style>
+      #container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .hide-radio {
+        display: none;
+      }
+      [type="button"]:not(:disabled) {
+        cursor: pointer;
+      }
+      .radio-btn {
+        background-color: unset;
+        border: 0;
+        color: #303F55;
+        align-self: end;
+      }
+      .radio-btn:disabled {
+        opacity: 0.9;
+        cursor: not-allowed;
+      }
+      .disabled-rev-container {
+        cursor: not-allowed;
+      }
+      .disabledRev {
+        pointer-events: none;
+      }
+
+      /* hierarchy of divs:
+      .question-container
+      .form-container
+      p
+      .radio-container
+      .radio-btn
+
+      #answer-container
+      #answer-div
+      #log
+      */
+      .question-container, #answer-container {
+        padding: 3rem;
+        text-align: center;
+        background-color: rgb(252, 231, 98);
+        height: 28rem;
+        width: 75%;
+        margin: 2rem auto;
+        border-radius: 2.5px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.45);
+        transition: all .09s ease-in-out;
+      }
+      .form-container, #answer-div {
+        height: 90%;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+      }
+      .radio-container {
+        display: flex;
+        /* flex-flow: column wrap; */
+        flex-direction: column;
+        /* align-content: center; */
+        /* height: 60%; */
+        align-items: baseline;
+      }
+      label {
+        cursor: pointer;
+        margin: 0.5rem;
+      }
+      form p {
+        font-weight: bold;
+      }
+      #answer-div {
+        text-align: left;
+      }
+      @media (max-width: 992px) {
+        .question-container, #answer-container {
+            height: 30rem;
+            width: 90%;
+        }
+        .radio-container {
+            height: unset;
+        }
+      }
+      @media (max-width: 482px) {
+        .question-container, #answer-container {
+            height: 30rem;
+            width: 100%;
+            padding: 1rem;
+        }
+        .radio-container {
+            height: unset;
+        }
+      }
+      .show {
+        display: flex !important;
+      }
+      </style>
+      <div id="container">
+        <h1>Character questionnaire</h1>
+        <form id="interactiveForm">
+          <div class="question-container">
+            <div class="form-container">
+              <p>What does your character identify as?</p>
+              <div class="radio-container">
+                <div>
+                    <input type="radio" id="q1Choice1" name="Your character identifies as" value="Male" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q1Choice1">Male</label><br/>
+                </div>
+                <div>
+                    <input type="radio" id="q1Choice2" name="Your character identifies as" value="Female" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q1Choice2">Female</label><br/>
+                </div>
+                <div>
+                    <input type="radio" id="q1Choice3" name="Your character identifies as" value="Other" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q1Choice3">Other</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio1()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>What is her/his age range?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q2Choice1" name="Their age range is" value="18-24" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice1">18–24</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice2" name="Their age range is" value="25-30" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice2">25-30</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice3" name="Their age range is" value="31-40" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice3">31-40</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice4" name="Their age range is" value="41-50" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice4">41-50</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice5" name="Their age range is" value="51-60" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice5">51-60</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice6" name="Their age range is" value="61-70" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice6">61-70</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice7" name="Their age range is" value="71-80" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice7">71-80</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q2Choice8" name="Their age range is" value="81+" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q2Choice8">81+</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio2()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>Growing up, how was her/his income bracket best described?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q3Choice1" name="Their income growing up was" value="Low" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q3Choice1">Low</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q3Choice2" name="Their income growing up was" value="Medium" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q3Choice2">Medium</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q3Choice3" name="Their income growing up was" value="High" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q3Choice3">High</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio3()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>How is her/his present income bracket best described?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q4Choice1" name="Their present income is" value="Low" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q4Choice1">Low</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q4Choice2" name="Their present income is" value="Medium" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q4Choice2">Medium</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q4Choice3" name="Their present income is" value="High" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q4Choice3">High</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio4()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>What is this person’s highest educational level?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q5Choice1" name="Their highest educational level is" value="Secondary" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q5Choice1">Secondary</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q5Choice2" name="Their highest educational level is" value="Post-secondary" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q5Choice2">Post-secondary</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q5Choice3" name="Their highest educational level is" value="Undergraduate" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q5Choice3">Undergraduate</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q5Choice4" name="Their highest educational level is" value="Postgraduate" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q5Choice4">Postgraduate</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio5()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>How is this person’s relationship status best described?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q6Choice1" name="Their relationship status is" value="Single" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q6Choice1">Single</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q6Choice2" name="Their relationship status is" value="Partnered/Married" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q6Choice2">Partnered/Married</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q6Choice3" name="Their relationship status is" value="Divorced" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q6Choice3">Divorced</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q6Choice4" name="Their relationship status is" value="Widowed" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q6Choice4">Widowed</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio6()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>Recalling her/his relationships with family members including parents and siblings, how would this person describe these relationships?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q7Choice1" name="Their family relationships are" value="Happy" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q7Choice1">Happy and fulfilling</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q7Choice2" name="Their family relationships are" value="Traditional" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q7Choice2">Traditional</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q7Choice3" name="Their family relationships are" value="Dysfunctional" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q7Choice3">Dysfunctional</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q7Choice4" name="Their family relationships are" value="Toxic" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q7Choice4">Toxic</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio7()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>How are this character’s tastes in matters of dress, home-making and other issues of personal style best described?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q8Choice1" name="Their personal style is best described as" value="Conservative" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q8Choice1">Conservative</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q8Choice2" name="Their personal style is best described as" value="Avant-garde" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q8Choice2">Avant-garde</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q8Choice3" name="Their personal style is best described as" value="Unremarkable" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q8Choice3">Unremarkable</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q8Choice4" name="Their personal style is best described as" value="Ostentatious" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q8Choice4">Ostentatious</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio8()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>Who is this person most likely to admire out of the following?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q9Choice1" name="They are most likely to admire" value="Elvis Presley" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice1">Elvis Presley</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q9Choice2" name="They are most likely to admire" value="Mahatma Gandhi" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice2">Mahatma Gandhi</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q9Choice3" name="They are most likely to admire" value="Mata Hari" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice3">Mata Hari</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q9Choice4" name="They are most likely to admire" value="Princess Diana" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice4">Princess Diana</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q9Choice5" name="They are most likely to admire" value="Albert Einstein" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice5">Albert Einstein</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q9Choice6" name="They are most likely to admire" value="Anna Akhmatova" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q9Choice6">Anna Akhmatova</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" type="button" value="Choose an option" onclick="hideRadio9()"/>
+            </div>
+          </div>
+
+          <div class="hide-radio question-container">
+            <div class="form-container">
+              <p>If asked, is this person most likely to say s/he trusts strangers or distrusts strangers?</p>
+              <div class="radio-container">
+                <div>
+                  <input type="radio" id="q10Choice1" name="If asked, they will say they" value="Trusts strangers" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q10Choice1">Trusts strangers</label><br/>
+                </div>
+                <div>
+                  <input type="radio" id="q10Choice2" name="If asked, they will say they" value="Distrusts strangers" onclick="radioChanged(this)" autocomplete="off"/>
+                  <label for="q10Choice2">Distrusts strangers</label><br/>
+                </div>
+              </div>
+              <input class="radio-btn" id="submit-btn" type="button" value="See answers" onclick="hideRadio10()"/>
+            </div>
+          </div>
+        </form>
+        <div class="hide-radio" id="answer-container">
+          <div id="answer-div">
+              <p id="log">
+              </p>
+            </div>
+        </div>
+
+        <script>
+          // display form answers in a separate section
+            var form = document.querySelector("form");
+            var log = document.querySelector("#log");
+            var submitBtn = document.getElementById("submit-btn");
+            var intForm = document.getElementById("interactiveForm");
+
+            // form.addEventListener("submit", function(event) {
+            // var data = new FormData(form);
+            // var output = "";
+            // for (const entry of data) {
+            //   output = output + entry[0] + ": " + "<b>" + entry[1] + "</b>" + "<br/>";
+            // };
+            // log.innerHTML = output;
+            // event.preventDefault();
+            // }, false);
+
+          //hide and reveal form elements after clicking an option
+          var questionCont =  document.getElementsByClassName("question-container");
+          var radioBtn = document.getElementsByClassName("radio-btn");
+
+          radioBtn[0].disabled = true;
+          radioBtn[0].value = "Choose an option";
+
+            function hideRadio1() {
+              questionCont[0].classList.add("hide-radio");
+              questionCont[1].classList.remove("hide-radio");
+              radioBtn[1].disabled = true;
+              radioBtn[1].value = "Choose an option";
+            }
+            function hideRadio2() {
+              questionCont[1].classList.add("hide-radio");
+              questionCont[2].classList.remove("hide-radio");
+              radioBtn[2].disabled = true;
+              radioBtn[2].value = "Choose an option";
+            }
+            function hideRadio3() {
+              questionCont[2].classList.add("hide-radio");
+              questionCont[3].classList.remove("hide-radio");
+              radioBtn[3].disabled = true;
+              radioBtn[3].value = "Choose an option";
+            }
+            function hideRadio4() {
+              questionCont[3].classList.add("hide-radio");
+              questionCont[4].classList.remove("hide-radio");
+              radioBtn[4].disabled = true;
+              radioBtn[4].value = "Choose an option";
+            }
+            function hideRadio5() {
+              questionCont[4].classList.add("hide-radio");
+              questionCont[5].classList.remove("hide-radio");
+              radioBtn[5].disabled = true;
+              radioBtn[5].value = "Choose an option";
+            }
+            function hideRadio6() {
+              questionCont[5].classList.add("hide-radio");
+              questionCont[6].classList.remove("hide-radio");
+              radioBtn[6].disabled = true;
+              radioBtn[6].value = "Choose an option";
+            }
+            function hideRadio7() {
+              questionCont[6].classList.add("hide-radio");
+              questionCont[7].classList.remove("hide-radio");
+              radioBtn[7].disabled = true;
+              radioBtn[7].value = "Choose an option";
+            }
+            function hideRadio8() {
+              questionCont[7].classList.add("hide-radio");
+              questionCont[8].classList.remove("hide-radio");
+              radioBtn[8].disabled = true;
+              radioBtn[8].value = "Choose an option";
+            }
+            function hideRadio9() {
+              questionCont[8].classList.add("hide-radio");
+              questionCont[9].classList.remove("hide-radio");
+              radioBtn[9].disabled = true;
+              radioBtn[9].value = "Choose an option";
+            }
+            function hideRadio10() {
+              questionCont[9].classList.add("hide-radio");
+              document.getElementById("answer-container").classList.remove("hide-radio");
+
+              var data = new FormData(intForm);
+              var output = "";
+              for (const entry of data) {
+                output = output + entry[0] + ": " + "<b>" + entry[1] + "</b>" + "<br/>";
+              };
+              log.innerHTML = output;
+              event.preventDefault();
+
+            }
+
+            //function that enables or disables a submit button depending on whether a radio button has been ticked or not.
+            function radioChanged(radioInput){
+                for (var i = 0; i < radioBtn.length; i++) {
+                  //If the checkbox has been checked
+                  if(radioInput.checked){
+                      //Set the disabled property to FALSE and enable the button.
+                       {
+                        radioBtn[i].disabled =false;
+                        radioBtn[i].value = "Next question  ►";
+                        radioBtn[9].value = "See answers";
+                      }
+
+                  } else{
+                      //Otherwise, disable the submit button.
+                      radioBtn[i].disabled = true;
+                      radioBtn[i].value = "Choose an option";
+                  }
+              }
+            }
+        </script>
+
+      </div>
+    </body>
+</html>
