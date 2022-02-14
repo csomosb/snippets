@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Table styles - in use</title>
+    </head>
+    <body>
+      <link ref="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic">
+      <link ref="stylesheet" href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700">
+      <style>
+      body {
+        font-family: Lato, sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        display: block;
+        box-sizing: border-box;
+      }
+      #container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      table .center {
+        margin: 0 auto;
+      }
+      th, td {
+        padding: 0.5rem;
+      }
+      .data th, .data td {
+        padding: 0.25rem;
+      }
+      h3 {
+        font-weight: 900;
+      }
+
+      #crud-matrix-table { margin: 0 auto; max-width: 30rem; padding: 0 2rem 2rem 4rem; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25); background-color: #fcfcfa; border-radius: 5px; }
+      #crud-matrix-table table { width: 100%; text-align: center; }
+      #crud-matrix-table th { color:#00264d; }
+      #crud-matrix-table th, #crud-matrix-table td { border-left: 1px #cce6ff solid; border-top: 1px #cce6ff solid; }
+      #crud-matrix-table tbody th, #crud-matrix-table thead .th-corner { border-left: 1px #fafaf7 solid; }
+      #crud-matrix-table thead th { border-top: 1px #fafaf7 solid; }
+      #h3-process {font-size:1.4rem; position:relative; right: 17rem; top: -5.5rem; rotate: 270deg; height: 1rem; color:#928254;}
+      #h3-entity {font-size:1.4rem; position: relative; top:2.5rem; left: 20.5rem; color:#928254;}
+      .caption-table {width: 6rem; margin: 1.5rem auto;}
+      </style>
+      <div id="container">
+        <h1>Table styles - in use</h1>
+        <div id="crud-matrix-table">
+          <h3 id="h3-entity">Entity</h3>
+          <h3 id="h3-process">Process</h3>
+          <table class="center data">
+            <thead>
+              <tr>
+                  <th class="th-corner"> </th>
+                  <th>Customer</th>
+                  <th>Address</th>
+                  <th>Order</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <th>New Customer</th>
+                  <td>C R</td>
+                  <td>C</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <th>Maintain Customer</th>
+                  <td>U R</td>
+                  <td>U R</td>
+                  <td>R</td>
+              </tr>
+              <tr>
+                  <th>Delete Customer</th>
+                  <td>D R</td>
+                  <td>D R</td>
+                  <td>R</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caption-table">Figure 2.4.4</p>
+      </div>
+    </body>
+</html>
