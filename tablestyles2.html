@@ -7,7 +7,6 @@
     </head>
     <body>
       <link ref="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic">
-      <link ref="stylesheet" href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700">
       <style>
       body {
         font-family: Lato, sans-serif;
@@ -26,28 +25,114 @@
       table {
         border-collapse: collapse;
       }
-      table .center {
-        margin: 0 auto;
+      .center {
+        margin: 0 auto !important;
       }
-      th, td {
+      th,
+      td {
         padding: 0.5rem;
       }
-      .data th, .data td {
+      .data th,
+      .data td {
         padding: 0.25rem;
       }
       h3 {
         font-weight: 900;
       }
+      div {
+        margin-bottom: 5rem;
+      }
 
-      #crud-matrix-table { margin: 0 auto; max-width: 30rem; padding: 0 2rem 2rem 4rem; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25); background-color: #fcfcfa; border-radius: 5px; }
-      #crud-matrix-table table { width: 100%; text-align: center; }
-      #crud-matrix-table th { color:#00264d; }
-      #crud-matrix-table th, #crud-matrix-table td { border-left: 1px #cce6ff solid; border-top: 1px #cce6ff solid; }
-      #crud-matrix-table tbody th, #crud-matrix-table thead .th-corner { border-left: 1px #fafaf7 solid; }
-      #crud-matrix-table thead th { border-top: 1px #fafaf7 solid; }
-      #h3-process {font-size:1.4rem; position:relative; right: 17rem; top: -5.5rem; rotate: 270deg; height: 1rem; color:#928254;}
-      #h3-entity {font-size:1.4rem; position: relative; top:2.5rem; left: 20.5rem; color:#928254;}
-      .caption-table {width: 6rem; margin: 1.5rem auto;}
+      /* style rules for matrix table */
+      #crud-matrix-table {
+        margin: 0 auto;
+        max-width: 30rem;
+        padding: 0 2rem 2rem 4rem;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+        background-color: #fcfcfa;
+        border-radius: 5px;
+      }
+      #crud-matrix-table table {
+        width: 100%;
+        text-align: center;
+      }
+      #crud-matrix-table th {
+        color:#00264d;
+      }
+      #crud-matrix-table th,
+      #crud-matrix-table td {
+        border-left: 1px #cce6ff solid;
+        border-top: 1px #cce6ff solid;
+      }
+      #crud-matrix-table tbody th,
+      #crud-matrix-table thead .th-corner {
+        border-left: 1px #fafaf7 solid;
+      }
+      #crud-matrix-table thead th {
+        border-top: 1px #fafaf7 solid;
+      }
+      #h3-process {
+        font-size:1.4rem; position:relative;
+        right: 17rem; top: -5.5rem;
+        rotate: 270deg;
+        height: 1rem;
+        color:#928254;
+      }
+      #h3-entity {
+        font-size:1.4rem;
+        position: relative;
+        top:2.5rem;
+        left: 20.5rem;
+        color:#928254;
+      }
+      .caption-table {
+        width: 6rem;
+        margin: 1.5rem auto;
+      }
+
+      /* style rules for gig table */
+      .gig-table table {
+        box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+        border-left: 1px white solid;
+      }
+      .gig-table tbody tr:nth-child(odd) {
+        background-color: #ffeaea;
+      }
+      .gig-table tbody tr:nth-child(even),
+      .gig-table thead {
+        background-color: white;
+      }
+      .gig-table th,
+      .gig-table td {
+        border-left: 1px #d0d0d0 dashed;
+      }
+      .gig-table table caption {
+        font-size: 1.2rem;
+      }
+
+      /* style rules specific to the table with svg elements */
+      .cell-txt-1 {
+        color: #0d1484;
+      }
+      .cell-txt-2 {
+        color: #ce00a4;
+      }
+      .col-colour {
+        background-color: rgba(163, 251, 255, 0.25);
+      }
+      #table-1-top {
+        max-width: 719px;
+        height: 50px;
+        margin-bottom:0;
+      }
+      #table-1-bottom {
+        max-width: 719px;
+        margin-top:0;
+      }
+      #table-2-bottom {
+        max-width: 425px;
+        margin-top:0;
+      }
       </style>
       <div id="container">
         <h1>Table styles - in use</h1>
@@ -86,6 +171,274 @@
           </table>
         </div>
         <p class="caption-table">Figure 2.4.4</p>
+        <div class="gig-table">
+          <table class="data center">
+              <thead>
+                  <tr>
+                      <th>GigNo</th>
+                      <th>Date</th>
+                      <th>VenueNo</th>
+                      <th>VenueName</th>
+                      <th>Capacity</th>
+                      <th>BandNo</th>
+                      <th>BandName</th>
+                      <th>Genre</th>
+                      <th>Minutes</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>G1</td>
+                      <td>03/04/2009</td>
+                      <td>V1</td>
+                      <td>Dog & Parrot</td>
+                      <td>40</td>
+                      <td>B1</td>
+                      <td>Hunky Dory</td>
+                      <td>Indie</td>
+                      <td>40</td>
+                  </tr>
+                  <tr>
+                      <td>G1</td>
+                      <td>03/04/2009</td>
+                      <td>V1</td>
+                      <td>Dog & Parrot</td>
+                      <td>40</td>
+                      <td>B2</td>
+                      <td>Rockers</td>
+                      <td>Punk</td>
+                      <td>50</td>
+                  </tr>
+                  <tr>
+                      <td>G2</td>
+                      <td>03/04/2009</td>
+                      <td>V2</td>
+                      <td>Assembly Rooms</td>
+                      <td>100</td>
+                      <td>B3</td>
+                      <td>All that jazz</td>
+                      <td>Jazz</td>
+                      <td>50</td>
+                  </tr>
+                  <tr>
+                      <td>G2</td>
+                      <td>03/04/2009</td>
+                      <td>V2</td>
+                      <td>Assembly Rooms</td>
+                      <td>100</td>
+                      <td>B4</td>
+                      <td>Blue Heaven</td>
+                      <td>Jazz</td>
+                      <td>70</td>
+                  </tr>
+                  <tr>
+                      <td>G3</td>
+                      <td>04/04/2009</td>
+                      <td>V1</td>
+                      <td>Dog & Parrot</td>
+                      <td>40</td>
+                      <td>B16</td>
+                      <td>All Folk</td>
+                      <td>Folk</td>
+                      <td>35</td>
+                  </tr>
+                  <tr>
+                      <td>G3</td>
+                      <td>04/04/2009</td>
+                      <td>V1</td>
+                      <td>Dog & Parrot</td>
+                      <td>40</td>
+                      <td>B17</td>
+                      <td>Reelers</td>
+                      <td>Folk</td>
+                      <td>75</td>
+                  </tr>
+                  <tr>
+                      <td>G4</td>
+                      <td>05/04/2009</td>
+                      <td>V3</td>
+                      <td>Red Lion</td>
+                      <td>30</td>
+                      <td>B10</td>
+                      <td>The Sparkies</td>
+                      <td>Electro</td>
+                      <td>50</td>
+                  </tr>
+                  <tr>
+                      <td>G4</td>
+                      <td>05/04/2009</td>
+                      <td>V3</td>
+                      <td>Red Lion</td>
+                      <td>30</td>
+                      <td>B11</td>
+                      <td>Wiry Ted</td>
+                      <td>Electro</td>
+                      <td>50</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="gig-table">
+          <figure class="center" id="table-1-top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 719 50">
+              <defs>
+                <style>
+                  .top-line-1 {fill: none;stroke: #4d4d4d;stroke-miterlimit: 10;stroke-width: 2px;}
+                  .top-arrow-1 {fill: #4d4d4d;}
+                </style>
+              </defs>
+              <g id="Layer_6" data-name="Layer 6">
+                <g>
+                  <line class="top-line-1" x1="460" y1="4" x2="460" y2="35.88"/>
+                  <polygon class="top-arrow-1" points="460 50 451.87 30.1 460 34.82 468.13 30.1 460 50"/>
+                </g>
+                <line class="top-line-1" x1="687" y1="4" x2="687" y2="50"/>
+                <g>
+                  <line class="top-line-1" x1="27" y1="4" x2="27" y2="35.88"/>
+                  <polygon class="top-arrow-1" points="27 50 18.87 30.1 27 34.82 35.13 30.1 27 50"/>
+                </g>
+                <line class="top-line-1" x1="27" y1="4" x2="687" y2="4"/>
+              </g>
+            </svg>
+          </figure>
+          <table class="data center">
+            <thead>
+              <tr>
+                <th class="col-colour cell-txt-1">GigNo</th>
+                <th>Date</th>
+                <th>VenueNo</th>
+                <th>VenueName</th>
+                <th>Capacity</th>
+                <th class="col-colour cell-txt-2">BandNo</th>
+                <th>BandName</th>
+                <th>Genre</th>
+                <th class="col-colour">Minutes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-colour cell-txt-1">G1</td>
+                <td>03/04/2009</td>
+                <td>V1</td>
+                <td>Dog & Parrot</td>
+                <td>40</td>
+                <td class="col-colour cell-txt-2">B1</td>
+                <td>Hunky Dory</td>
+                <td>Indie</td>
+                <td class="col-colour">40</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G1</td>
+                <td>03/04/2009</td>
+                <td>V1</td>
+                <td>Dog & Parrot</td>
+                <td>40</td>
+                <td class="col-colour cell-txt-2">B2</td>
+                <td>Rockers</td>
+                <td>Punk</td>
+                <td class="col-colour">50</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G2</td>
+                <td>03/04/2009</td>
+                <td>V2</td>
+                <td>Assembly Rooms</td>
+                <td>100</td>
+                <td class="col-colour cell-txt-2">B3</td>
+                <td>All that jazz</td>
+                <td>Jazz</td>
+                <td class="col-colour">50</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G2</td>
+                <td>03/04/2009</td>
+                <td>V2</td>
+                <td>Assembly Rooms</td>
+                <td>100</td>
+                <td class="col-colour cell-txt-2">B4</td>
+                <td>Blue Heaven</td>
+                <td>Jazz</td>
+                <td class="col-colour">70</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G3</td>
+                <td>04/04/2009</td>
+                <td>V1</td>
+                <td>Dog & Parrot</td>
+                <td>40</td>
+                <td class="col-colour cell-txt-2">B16</td>
+                <td>All Folk</td>
+                <td>Folk</td>
+                <td class="col-colour">35</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G3</td>
+                <td>04/04/2009</td>
+                <td>V1</td>
+                <td>Dog & Parrot</td>
+                <td>40</td>
+                <td class="col-colour cell-txt-2">B17</td>
+                <td>Reelers</td>
+                <td>Folk</td>
+                <td class="col-colour">75</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G4</td>
+                <td>05/04/2009</td>
+                <td>V3</td>
+                <td>Red Lion</td>
+                <td>30</td>
+                <td class="col-colour cell-txt-2">B10</td>
+                <td>The Sparkies</td>
+                <td>Electro</td>
+                <td class="col-colour">50</td>
+              </tr>
+              <tr>
+                <td class="col-colour cell-txt-1">G4</td>
+                <td>05/04/2009</td>
+                <td>V3</td>
+                <td>Red Lion</td>
+                <td>30</td>
+                <td class="col-colour cell-txt-2">B11</td>
+                <td>Wiry Ted</td>
+                <td>Electro</td>
+                <td class="col-colour">50</td>
+              </tr>
+            </tbody>
+          </table>
+          <figure class="center" id="table-1-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 719 51">
+              <defs>
+                <style>
+                  .btm-line-1, .btm-line-2, {fill: none;}
+                  .btm-line-1 {stroke: #263fcc;}
+                  .btm-line-1, .btm-line-2 {stroke-miterlimit: 10;stroke-width: 2px;}
+                  .btm-arrow-1 {fill: #263fcc;}
+                  .btm-line-2 {stroke: #f0f;}
+                  .btm-arrow-2 {fill: #f0f;}
+                </style>
+              </defs>
+              <g id="Layer_5" data-name="Layer 5">
+                <g>
+                  <line class="btm-line-1" x1="26" y1="46" x2="26" y2="14.12"/>
+                  <polygon class="btm-arrow-1" points="26 0 34.13 19.9 26 15.18 17.87 19.9 26 0"/>
+                </g>
+                <g>
+                  <line class="btm-line-2" x1="459" y1="46" x2="459" y2="14.12"/>
+                  <polygon class="btm-arrow-2" points="459 0 467.13 19.9 459 15.18 450.87 19.9 459 0"/>
+                </g>
+                <line class="btm-line-2" x1="535" y1="46" x2="535"/>
+                <line class="btm-line-2" x1="620" y1="46" x2="620"/>
+                <line class="btm-line-1" x1="378" y1="46" x2="378"/>
+                <line class="btm-line-1" x1="278" y1="46" x2="278"/>
+                <line class="btm-line-1" x1="26" y1="46" x2="378" y2="46"/>
+                <line class="btm-line-2" x1="459" y1="46" x2="620" y2="46"/>
+                <line class="btm-line-1" x1="184" y1="46" x2="184"/>
+                <line class="btm-line-1" x1="96" y1="46" x2="96"/>
+              </g>
+            </svg>
+          </figure>
+        </div>
       </div>
     </body>
 </html>
