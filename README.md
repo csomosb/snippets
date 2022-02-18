@@ -34,3 +34,10 @@ Table styles 1:
 Table styles 2:
  * Continuation of the table styles concept.
  * These are actually in use and are considered more advanced designs.
+
+API:
+* This file is a demo of working with APIs - http://wavesurfer-js.org/docs/ and https://html2canvas.hertzen.com/
+* The users see an interface with 3 different waveforms for 3 different audio files.
+* In the original context they are asked to place markers when they think a criteria has been met in the audio.
+* After they are finished they are asked to take a screenshot and upload it to a forum.
+* To ensure that the screenshots match in appearance and are easy to compare to each other I built in a way to take the screenshots in browser only of the neccessary area.
