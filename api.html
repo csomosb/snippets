@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Working with APIs</title>
+    </head>
+    <body>
+      <style>
+      #container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      figure {
+        margin: 0 auto;
+      }
+      #waveform-cont audio,
+      #waveform-cont-2 audio,
+      #waveform-cont-3 audio {
+        margin-top: 2.5rem;
+        max-width: 400px;
+      }
+      .waveform-section {
+        text-align: center;
+        box-shadow: 0 0 6px #eee;
+        margin: 0 auto 5rem auto !important;
+        width: 90%;
+        padding: 2rem;
+      }
+      .waveform-section button {
+        background: #474747;
+        color: white;
+        border: unset;
+        padding: 0.3rem 0.5rem;
+        font-size: 1rem;
+        margin: 0.25rem auto;
+      }
+      </style>
+      <div id="container">
+        <h1>Working with APIs</h1>
+
+        <!-- javascript libraries for wavesurfer and its markers plugin -->
+        <script src="https://unpkg.com/wavesurfer.js"></script>
+        <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.markers.min.js"></script>
+
+        <!-- javascript library for taking screenshots in browser -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+        <!-- container for waveforms, figure divided into sections of the waveform div and buttons -->
+        <figure>
+          <section class="waveform-section">
+            <div id="waveform-cont"></div>
+            <div id="btn-cont">
+              <button type="button" name="add-btn" onclick="addmarker()">Add Markers</button>
+              <button type="button" name="clear-btn" onclick="clearmarker()">Clear Markers</button>
+              <button type="button" name="screen-btn" onclick="takeshot()" id="screen-btn">Take Screenshot</button>
+            </div>
+          </section>
+          <section class="waveform-section">
+            <div id="waveform-cont-2"></div>
+            <div id="btn-cont-2">
+              <button type="button" name="add-btn" onclick="addmarker2()">Add Markers</button>
+              <button type="button" name="clear-btn" onclick="clearmarker2()">Clear Markers</button>
+              <button type="button" name="screen-btn" onclick="takeshot2()" id="screen-btn-2">Take Screenshot</button>
+            </div>
+          </section>
+          <section class="waveform-section">
+            <div id="waveform-cont-3"></div>
+            <div id="btn-cont-3">
+              <button type="button" name="add-btn" onclick="addmarker3()">Add Markers</button>
+              <button type="button" name="clear-btn" onclick="clearmarker3()">Clear Markers</button>
+              <button type="button" name="screen-btn" onclick="takeshot3()" id="screen-btn-3">Take Screenshot</button>
+            </div>
+          </section>
+      </figure>
+
+        <script type="text/javascript">
+        // wavesurfer init
+        var wavesurfer = null;
+        var wavesurfer2 = null;
+        var wavesurfer3 = null;
+
+        // function for clearing all markers, fired with button interaction
+        var clearmarker = function() {
+          wavesurfer.clearMarkers();
+        }
+        var clearmarker2 = function() {
+          wavesurfer2.clearMarkers();
+        }
+        var clearmarker3 = function() {
+          wavesurfer3.clearMarkers();
+        }
+
+        // sets up wavesurfer along with the plugins
+        var prepare = function() {
+          wavesurfer = WaveSurfer.create({
+            container: '#waveform-cont',
+            backend: 'MediaElement',
+            mediaControls: 'true',
+            waveColor: '#FFD1BA',
+            progressColor: '#ff8547',
+            hideScrollbar: true,
+            height: 150,
+            plugins: [
+                WaveSurfer.markers.create({
+                    markers: []
+                })
+              ]
+          });
+          wavesurfer2 = WaveSurfer.create({
+            container: '#waveform-cont-2',
+            backend: 'MediaElement',
+            mediaControls: 'true',
+            waveColor: '#DFF3E3',
+            progressColor: '#6BC77D',
+            hideScrollbar: true,
+            height: 150,
+            plugins: [
+                WaveSurfer.markers.create({
+                    markers: []
+                })
+              ]
+          });
+          wavesurfer3 = WaveSurfer.create({
+            container: '#waveform-cont-3',
+            backend: 'MediaElement',
+            mediaControls: 'true',
+            waveColor: '#D8D0F1',
+            progressColor: '#7152cb',
+            hideScrollbar: true,
+            height: 150,
+            plugins: [
+                WaveSurfer.markers.create({
+                    markers: []
+                })
+              ]
+          });
+          wavesurfer.on('ready', function() {
+            wavesurfer.play();
+          });
+          wavesurfer2.on('ready', function() {
+            wavesurfer2.play();
+          });
+          wavesurfer3.on('ready', function() {
+            wavesurfer3.play();
+          });
+          // the audio files
+          wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/last_lines_bronte_add.mp3');
+          wavesurfer2.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/tothesundial_adams_jb.mp3');
+          wavesurfer3.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_of_myself_50_whitman_add.mp3');
+        }();
+
+        //function below adds a marker at the position of the seeker line
+        var addmarker = function() {
+          // add a new marker
+          wavesurfer.addMarker({
+            color: '#ec325a',
+            draggable: true
+          });
+          // first section of the wave, this is for the playing audio
+          var wave1 = document.getElementsByTagName("wave")[1];
+          // collection of all markers in the first waveform
+          var wave0 = document.getElementsByTagName("wave")[0];
+          var markers1 = wave0.querySelectorAll("marker");
+          // the width of the first wave, it's where the marker should go upon button press
+          var wave1Width = wave1.offsetWidth;
+            // the marker's left side is not its centre but the marker shape's border so that's why the arithmetic is needed
+            wave1Width -= 6;
+            wave1Width = wave1Width + "px";
+            // this is the length of the markers HTMLCollection, to get the last element 1 needs to be substracted
+            lastMarker = markers1.length-1;
+            // the last marker's position is set to offsetWidth-5
+            markers1[lastMarker].style.left=wave1Width;
+          // check if the last placed marker at even or odd position
+          // changes the style of the placed marker accordingly
+          function isEven(lastMarker) {
+            if (lastMarker%2 == 0)
+              return true;
+            else {
+              markers1[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.fill="#ffb140";
+              markers1[lastMarker].style.flexDirection="column-reverse";
+              markers1[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.transform="rotate(180deg) translate(-40px,-80px)";
+            }
+          }
+          isEven(lastMarker);
+        }
+
+        //function below adds a marker at the position of the seeker line for the second waveform
+        var addmarker2 = function() {
+          wavesurfer2.addMarker({
+            color: '#ec325a',
+            draggable: true
+          });
+          var wave3 = document.getElementsByTagName("wave")[3];
+          var wave2 = document.getElementsByTagName("wave")[2];
+          var markers2 = wave2.querySelectorAll("marker");
+          var wave3Width = wave3.offsetWidth;
+            wave3Width -= 6;
+            wave3Width = wave3Width + "px";
+            lastMarker = markers2.length-1;
+            markers2[lastMarker].style.left=wave3Width;
+          function isEven(lastMarker) {
+            if (lastMarker%2 == 0)
+              return true;
+            else {
+              markers2[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.fill="#ffb140";
+              markers2[lastMarker].style.flexDirection="column-reverse";
+              markers2[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.transform="rotate(180deg) translate(-40px,-80px)";
+            }
+          }
+          isEven(lastMarker);
+        }
+
+        //function below adds a marker at the position of the seeker line for the third waveform
+        var addmarker3 = function() {
+          wavesurfer3.addMarker({
+            color: '#ec325a',
+            draggable: true
+          });
+          var wave5 = document.getElementsByTagName("wave")[5];
+          var wave4 = document.getElementsByTagName("wave")[4];
+          var markers3 = wave4.querySelectorAll("marker");
+          var wave5Width = wave5.offsetWidth;
+            wave5Width -= 6;
+            wave5Width = wave5Width + "px";
+            lastMarker = markers3.length-1;
+            markers3[lastMarker].style.left=wave5Width;
+          function isEven(lastMarker) {
+            if (lastMarker%2 == 0)
+              return true;
+            else {
+              markers3[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.fill="#ffb140";
+              markers3[lastMarker].style.flexDirection="column-reverse";
+              markers3[lastMarker].childNodes[1].childNodes[0].childNodes[0].style.transform="rotate(180deg) translate(-40px,-80px)";
+            }
+          }
+          isEven(lastMarker);
+        }
+
+        // fixing the bug in html2canvas that makes svg elements invisible
+        var svgElements = document.body.querySelectorAll('svg');
+        svgElements.forEach(function(item) {
+            item.setAttribute("width", item.getBoundingClientRect().width);
+            item.setAttribute("height", item.getBoundingClientRect().height);
+            item.style.width = null;
+            item.style.height= null;
+        });
+
+        //function for taking screenshots
+        // and for downloading the screenshotted area
+        function takeshot(){
+          const div = document.getElementById("waveform-cont");
+          html2canvas(div).then(
+            function (canvas) {
+              allowTaint: true;
+              canvas.style.display = 'none';
+              document.body.appendChild(canvas);
+              return canvas;
+            })
+            .then(
+              function(canvas) {
+              const image = canvas.toDataURL('image/png');
+              const a = document.createElement('a');
+                a.setAttribute('download', 'my-image.png');
+                a.setAttribute('href', image);
+                a.click();
+                canvas.remove();
+            })
+        }
+
+        function takeshot2(){
+          const div = document.getElementById("waveform-cont-2");
+          html2canvas(div).then(
+            function (canvas) {
+              allowTaint: true;
+              canvas.style.display = 'none';
+              document.body.appendChild(canvas);
+              return canvas;
+            })
+            .then(
+              function(canvas) {
+              const image = canvas.toDataURL('image/png');
+              const a = document.createElement('a');
+                a.setAttribute('download', 'my-image.png');
+                a.setAttribute('href', image);
+                a.click();
+                canvas.remove();
+            })
+        }
+
+        function takeshot3(){
+          const div = document.getElementById("waveform-cont-3");
+          html2canvas(div).then(
+            function (canvas) {
+              allowTaint: true;
+              canvas.style.display = 'none';
+              document.body.appendChild(canvas);
+              return canvas;
+            })
+            .then(
+              function(canvas) {
+              const image = canvas.toDataURL('image/png');
+              const a = document.createElement('a');
+                a.setAttribute('download', 'my-image.png');
+                a.setAttribute('href', image);
+                a.click();
+                canvas.remove();
+            })
+        }
+
+        </script>
+      </div>
+    </body>
+</html>
