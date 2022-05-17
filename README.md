@@ -41,3 +41,8 @@ API:
 * In the original context they are asked to place markers when they think a criteria has been met in the audio.
 * After they are finished they are asked to take a screenshot and upload it to a forum.
 * To ensure that the screenshots match in appearance and are easy to compare to each other I built in a way to take the screenshots in browser only of the neccessary area.
+
+Typewriter quiz:
+* Multi-level quiz with section seperated into "Sequences". Originally the purpose of this was to let the users generate a film script based on the choices they made.
+* The typewriter motif is for strengthening the idea of the result being a script the users create.
+* There is an option for navigating back to the answered sections of the form where users can review but not change their answers.
